@@ -4,10 +4,10 @@ services:
   - docker
 
 before_install:
-  - docker build -t dk/react-test-app -f ./frontend/Dockerfile.dev ./frontend
+  - docker build -t dk/docker-multi-app -f ./frontend/Dockerfile.dev ./frontend
 
 script:
-  - docker run -e CI=true dk/react-test-app npm test
+  - docker run -e CI=true dk/docker-multi-app npm test
 
 after_success:
   # 각각의 이미지 빌드
