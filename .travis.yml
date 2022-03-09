@@ -23,7 +23,7 @@ after_success:
   - docker push dk/docker-nginx
 
 deploy:
-  provider: ealsticbeanstalk
+  provider: elasticbeanstalk
   region: ap-northeast-2
   app: docker-multi-app
   env: Dockermultiapp-env
