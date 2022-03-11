@@ -58,10 +58,10 @@ function App() {
             <form className="example" onSubmit={submitHandler}>
               <input
                   type="text"
-                  placeholder="입력해주세요..."
+                  placeholder="입력해주세요"
                   // 값을 입력할 때마다 onChange 이벤트가 발생하고 changeHandler 함수를 호출
                   onChange={changeHandler}
-                  // Input 박스의 value를 state의 value로 컨트롤한다.
+                  // Input 박스의 value를 state의 value로 컨트롤
                   value={value}
               />
               <button type="submit">확인.</button>

@@ -8,6 +8,8 @@ const db = require('./db');
 const app = express();
 
 // JSON 형태로 전달되는 요청의 본문을 해석할 수 있게 등록
+// app.use(express.json());
+
 app.use(bodyParser.json());
 
 
