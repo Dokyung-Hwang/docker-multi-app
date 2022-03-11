@@ -6,30 +6,30 @@ services:
   - docker
 
 before_install:
-  - docker build -t dk/docker-multi-app -f ./frontend/Dockerfile.dev ./frontend
+  - docker build -t dokyung94/docker-multi-app -f ./frontend/Dockerfile.dev ./frontend
 
 script:
-  - docker run -e CI=true dk/docker-multi-app npm test
+  - docker run -e CI=true dokyung94/docker-multi-app npm test
 
 after_success:
-  - docker build -t dk/docker-frontend ./frontend
-  - docker build -t dk/docker-backend ./backend
-  - docker build -t dk/docker-nginx ./nginx
+  - docker build -t dokyung94/docker-frontend ./frontend
+  - docker build -t dokyung94/docker-backend ./backend
+  - docker build -t dokyung94/docker-nginx ./nginx
 
   - echo "$DOCKER_HUB_PASSWORD" | docker login -u "$DOCKER_HUB_ID" --password-stdin
 
-  - docker push dk/docker-frontend
-  - docker push dk/docker-backend
-  - docker push dk/docker-nginx
+  - docker push dokyung94/docker-frontend
+  - docker push dokyung94/docker-backend
+  - docker push dokyung94/docker-nginx
 
-#deploy:
-#  provider: elasticbeanstalk
-#  region: ap-northeast-2
-#  app: docker-multi-app
-#  env: Dockermultiapp-env
-#  bucket_name: elasticbeanstalk-ap-northeast-2-990079660208
-#  bucket_path: docker-multi-app
-#  on:
-#    branch: main
-#  access_key_id: $AWS_ACCESS_KEY
-#  secret_access_key: $AWS_SECRET_ACCESS_KEY
+deploy:
+  provider: elasticbeanstalk
+  region: ap-northeast-2
+  app: docker-multi-app
+  env: Dockermultiapp-env
+  bucket_name: elasticbeanstalk-ap-northeast-2-990079660208
+  bucket_path: docker-multi-app
+  on:
+    branch: main
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_ACCESS_KEY

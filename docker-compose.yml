@@ -2,7 +2,7 @@ version: "3"
 services:
   frontend:
     # 개발 환경을 위한 도커파일이 위치한 경로를 알려줌
-    image: dk/docker-frontend
+    image: dokyung94/docker-frontend
     # 볼륨을 설정
     volumes:
       - /app/node_modules
@@ -14,12 +14,12 @@ services:
     # 재시작 정책: 컨테이너가 멈추면 항상 다시 시작.
     # Nginx 가 멈추면 어떠한 요청도 서버에 도달하지 않으므로 Nginx 컨테이너는 항상 살아있어야함
     restart: always
-    image: dk/docker-nginx
+    image: dokyung94/docker-nginx
     ports:
       - "80:80"
 
   backend:
-    image: dk/docker-backend
+    image: dokyung94/docker-backend
     container_name: app_backend
     volumes:
       - /app/node_modules
